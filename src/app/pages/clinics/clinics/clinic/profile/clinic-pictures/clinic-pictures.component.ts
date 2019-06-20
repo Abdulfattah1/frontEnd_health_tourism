@@ -18,38 +18,8 @@ export class ClinicPicturesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.clinicService.getClinicImages()
-    //   .subscribe(data => {
-    //     this.slides = [{}];
-    //     this.slides = data['data']
-    //   })
   }
 
-  // addImages(event) {
-  //   console.log(this.slides);
-  //   this.clinicService.addImages(event)
-  //     .subscribe(data => {
-  //       if (data['success']) {
-  //         this.slides = [{}];
-  //         this.slides = data['images'];
-  //         this.tostr.success(data['message'], 'success');
-  //       }
-  //     }, err => {
-  //       this.tostr.error(err['message'], 'error');
-  //     })
-  //     console.log(this.slides);
-  // }
-
-  // deleteImage(imageIndex) {
-  //   console.log(this.slides);
-  //   this.clinicService.deleteImage(this.slides[imageIndex]['id'])
-  //     .subscribe(data => {
-  //       if (data['success']) {
-  //         this.slides.splice(imageIndex);
-  //         this.tostr.success(data['message'], 'success');
-  //       }
-  //     }, err => {
-  //       this.tostr.error(err['message'], 'error');
-  //     })
-  // }
+  deleteImage(event) { };
+  addImages(event) { };
 }

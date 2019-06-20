@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     {
         title: 'List.dashboard',
         icon: 'nb-home',
-        link: '/pages/dashboard',
+        link: '/dashboard',
         home: true,
         data: { privilege: ['dashboard'] }
     },
@@ -69,5 +69,38 @@ export const MENU_ITEMS: NbMenuItem[] = [
                 data: { privilege: ['addClinic'] }
             }
         ]
+    },
+    {
+        title: 'List.travelAgencies',
+        group: true,
+        data: { privilege: ['travelAgencies'] }
+    },
+    {
+        title: 'List.travelAgencies',
+        icon: "nb-locked",
+        data: { privilege: ['travelAgencies'] },
+        children: [
+            {
+                title: 'List.allTravelAgencies',
+                link: "/travelAgencies/allTravelAgencies",
+                data: { privilege: ['allTravelAgencies'] },
+            },
+            {
+                title: 'List.TravelAgenciesByStatus',
+                link: "/travelAgencies/TravelAgenciesByStatus",
+                data: { privilege: ['TravelAgenciesByStatus'] },
+            },
+            {
+                title: 'List.myTravelAgencies',
+                link: "/travelAgencies/myTravelAgencies",
+                data: { privilege: ['myTravelAgencies'] },
+            },
+            {
+                title: 'List.addTravelAgency',
+                link: "/travelAgencies/addTravelAgency",
+                data: { privilege: ['addTravelAgency'] }
+            }
+        ]
     }
+
 ];

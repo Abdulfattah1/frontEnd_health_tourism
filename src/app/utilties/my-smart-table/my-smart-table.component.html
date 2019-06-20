@@ -1,12 +1,6 @@
-<div *ngIf="loading">
-  <ng2-smart-table
-    [settings]="settings"
-    [source]="source"
-    (rowSelect)="rowSelect($event)"
-    (create)="onCreate($event)"
-    (delete)="onDelete($event)"
-    (edit) ="onEdit($event)"
-  ></ng2-smart-table>
+<div *ngIf="loading && displayTable;">
+  <ng2-smart-table [settings]="settings" [source]="source" (rowSelect)="rowSelect($event)" (create)="onCreate($event)"
+    (delete)="onDelete($event)" (edit)="onEdit($event)"></ng2-smart-table>
 </div>
 
 <ng-template #confirmModal let-c="close" let-d="dismiss">
@@ -20,19 +14,19 @@
     <p class="form-text">{{ "Table.areYouSure" | translate }}</p>
   </div>
   <div class="modal-footer" [lang]="lang">
-    <button
-      type="button"
-      class="btn btn-primary btn-pill btn-sm py-2 px-4 mr-2"
-      (click)="!!c(true)"
-    >
+    <button type="button" class="btn btn-primary btn-pill btn-sm py-2 px-4 mr-2" (click)="!!c(true)">
       {{ "button.yes" | translate }}
     </button>
-    <button
-      type="button"
-      class="btn btn-secondary btn-pill btn-sm py-2 px-4 mr-2"
-      (click)="!!c(false)"
-    >
+    <button type="button" class="btn btn-secondary btn-pill btn-sm py-2 px-4 mr-2" (click)="!!c(false)">
       {{ "button.no" | translate }}
     </button>
   </div>
 </ng-template>
+
+<div class="row justify-content-center text-center" *ngIf="loading && !displayTable">
+  <div class="col">
+    <h5>
+      {{"therAreNoData" | translate}}
+    </h5>
+  </div>
+</div>

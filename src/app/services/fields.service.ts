@@ -78,7 +78,11 @@ export class FieldsService {
       "firstName", "lastName", "email", "gender", "birthday", "mobileNumber"],
       fields['clinics'] = [
         "clinicName", "fOwnerName", "lOwnerName", "email", "city", "country", "descrption"
+      ],
+      fields['travelAgencies'] = [
+        "travelAgencyName", "fOwnerName", "lOwnerName", "email", "city", "country", "descrption"
       ]
+
     fields['roles'] = [
       'name', 'description'],
       fields['privileges'] = [

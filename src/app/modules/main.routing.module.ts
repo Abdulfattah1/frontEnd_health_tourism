@@ -24,6 +24,12 @@ const routes: Routes = [
         data: ['clinics'],
         loadChildren: 'app/pages/clinics/clinics.module#ClinicsModule'
       },
+      {
+        path: 'travelAgencies',
+        canActivate: [AuthGuard],
+        data: ['travelAgencies'],
+        loadChildren: 'app/pages/travel-agencies/travel-agencies.module#TravelAgenciesModule'
+      }
     ]
   }
 ];

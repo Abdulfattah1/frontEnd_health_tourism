@@ -32,6 +32,7 @@ export class MySmartTableComponent implements OnInit {
   title: string;
   loading: boolean = false;
   actions: any[] = [];
+  displayTable: boolean;
   source: LocalDataSource;
   constructor(
     private router: Router,
@@ -97,11 +98,21 @@ export class MySmartTableComponent implements OnInit {
       this.loading = false;
       this.utiliesService.getSmartTableData(this.apiName)
         .subscribe(data => {
+          this.loading = true;
           if (data['success']) {
             // if(!this.settings.columns) {
             //this.getMyColumns(data['data'][0]);
-            this.getMyColumns(this.fieldService.getTableInfo(this.fieldIndex));
-            this.loading = true;
+            let fields = this.fieldService.getTableInfo(this.fieldIndex);
+            if (!fields && data['data'].length != 0) {
+              this.getMyColumnsByKeyAValue(data['data'][0]);
+            } else if (fields) {
+              this.getMyColumns(fields);
+            }
+            if (data['data'].length == 0) {
+              this.displayTable = false;
+              return;
+            }
+            this.displayTable = true;
             this.tostr.success('the data was fetched correctly');
             //}
             this.dataSource = data['data'];
@@ -116,21 +127,21 @@ export class MySmartTableComponent implements OnInit {
     }
   }
 
+  getMyColumnsByKeyAValue(data) {
+    Object.keys(data).forEach(key => {
+      let KEY = key.toLowerCase();
+      this.settings.columns[key] = {
+        title: this.translate.translateWord("Table." + KEY)
+      }
+    })
+  }
   getMyColumns(data: string[]) {
-    // Object.keys(data).forEach(key => {
-    //   let KEY = key.toLowerCase();
-    //   this.settings.columns[key] = {
-    //     title: this.translate.translateWord("Table." + KEY)
-    //   }
-    // })
-
     data.forEach(key => {
       let KEY = key.toLowerCase();
       this.settings.columns[key] = {
         title: this.translate.translateWord("Table." + KEY)
       }
     })
-
   }
 
 

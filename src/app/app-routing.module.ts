@@ -8,12 +8,7 @@ import { } from "./modules/main.module"
 const routes: Routes = [
   //{ path: '', pathMatch: "full", canActivate: [AuthGuard], redirectTo: 'pages' },
 
-  { path: 'pages', canActivate: [AuthGuard], data: ['pages'], loadChildren: 'app/pages/pages.module#PagesModule' },
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    loadChildren: './modules/main.module#MainModule'
-  },
+  //{ path: 'pages', canActivate: [AuthGuard], data: ['pages'], loadChildren: 'app/pages/pages.module#PagesModule' },
   {
     path: 'auth', children: [
       {
@@ -25,6 +20,11 @@ const routes: Routes = [
         component: SignUpComponent
       }
     ]
+  },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: './modules/main.module#MainModule'
   },
   // {
   //   path: 'clinics',
