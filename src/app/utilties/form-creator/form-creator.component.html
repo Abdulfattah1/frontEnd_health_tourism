@@ -1,0 +1,129 @@
+<nb-card *ngIf="display">
+  <nb-card-header>
+    <h5 class="font-weight-bold text-center">{{ title }}</h5>
+  </nb-card-header>
+  <form class="formGroup" [formGroup]="Form" (submit)="onSubmit()">
+    <nb-card-body>
+      <div class="row text-center justify-content-center">
+        <div *ngFor="let item of items" [ngClass]="item.colClasses">
+          <div [ngSwitch]="item.type">
+            <div *ngSwitchCase="'text'">
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <input
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                [id]="item.name"
+                [type]="item.type"
+                class="form-control"
+                [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
+              />
+            </div>
+
+            <div *ngSwitchCase="'number'">
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <input
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                [id]="item.name"
+                [type]="item.type"
+                class="form-control"
+                [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
+              />
+            </div>
+
+            <div *ngSwitchCase="'selectApi'">
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <my-select
+                [type]="'api'"
+                [bindLabel]="item.bindLabel"
+                [apiName]="item.apiName"
+                [formControlName]="item.name"
+                (ngModelChange)="!!onChange(item.name,'selectApi')"
+              ></my-select>
+            </div>
+
+            <div *ngSwitchCase="'multiSelectApi'">
+                <h6 class="font-weight-bold">{{ item.label }}</h6>
+                <my-select
+                  [multiple] = 'true'
+                  [type]="'api'"
+                  [bindLabel]="item.bindLabel"
+                  [apiName]="item.apiName"
+                  [formControlName]="item.name"
+                  (ngModelChange)="!!onChange(item.name,'multiSelectApi')"
+                ></my-select>
+            </div>
+
+            <div *ngSwitchCase="'textarea'">
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <textarea
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                class="form-control"
+                [placeholder]="item.name"
+                [formControlName]="item.name"
+                rows="5"
+                (change)="!!onChange(item.name)"
+              ></textarea>
+            </div>
+
+            <div *ngSwitchCase="'date'">
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <input
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                [formControlName]="item.name"
+                class="form-control"
+                #dpYMD="bsDatepicker"
+                bsDatepicker
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                (ngModelChange)="!!onChange(item.name,'date')"
+              />
+            </div>
+
+            <div *ngSwitchDefault>
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <input
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                [id]="item.name"
+                [type]="item.type"
+                class="form-control"
+                [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
+              />
+            </div>
+
+            <div
+              *ngIf="
+                Form.get(item.name).hasError('required') &&
+                Form.get(item.name).touched
+              "
+            >
+              <small class="form-text text-muted text-danger mt-3">
+                {{ "validation.fieldIsRequried" | translate }}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row justify-content-center" *ngIf="creatingForm || !updateInternally">
+        <div class="col-4 text-center">
+          <button
+            type="submit"
+            nbButton
+            status="primary"
+            size="small"
+            [disabled]="!Form.valid"
+          >
+            {{ "button.save" | translate }}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </form>
+</nb-card>
