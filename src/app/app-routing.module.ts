@@ -32,12 +32,12 @@ const routes: Routes = [
   //   data: ['clinics'],
   //   loadChildren: 'app/pages/clinics/clinics.module#ClinicsModule'
   // },
-  {
-    path: "clinics/editClinic/:id",
-    // canActivate: [privilegesGuard],
-    // data: ['editClinic'],
-    loadChildren: './pages/clinics/clinics/clinic/clinic.module#ClinicModule'
-  },
+  // {
+  //   path: "clinics/editClinic/:id",
+  //   // canActivate: [privilegesGuard],
+  //   // data: ['editClinic'],
+  //   loadChildren: './pages/clinics/clinics/clinic/clinic.module#ClinicModule'
+  // },
   { path: '**', redirectTo: "pages" }
 ];
 

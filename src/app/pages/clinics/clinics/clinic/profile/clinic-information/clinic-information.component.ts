@@ -33,7 +33,6 @@ export class ClinicInformationComponent implements OnInit {
       .then().catch();
     this.clinicService.getClinicTypes()
       .then(res => {
-        console.log(res);
         this.form.get('clinicTypes').setValue(res);
       })
     this.clinicService.getClinicInfo()
@@ -41,13 +40,29 @@ export class ClinicInformationComponent implements OnInit {
         this.form.patchValue(res['data'][0]);
         this.location = {
           latitude: +this.form.get('latitude').value,
-          longitude:+this.form.get('longitude').value
+          longitude: +this.form.get('longitude').value
         }
         this.marker = this.location;
         this.loading = false;
       })
-    this.countryChanged();
-    this.cityChanged();
+    this.clinicService.getClinicCountry()
+      .then(data => {
+        this.countryChanged();
+        this.form.get('country').setValue(data[0]);
+        this.form.get('country').updateValueAndValidity();
+      })
+    this.clinicService.getClinicCity()
+      .then(data => {
+        this.cityChanged();
+        this.form.get('city').setValue(data[0]);
+        this.form.get('city').updateValueAndValidity();
+      })
+    this.clinicService.getClinicstate()
+      .then(data => {
+        this.form.get('state').setValue(data[0])
+        this.form.get('state').updateValueAndValidity();
+      })
+
 
   };
   async getSelectItems() {
@@ -66,6 +81,8 @@ export class ClinicInformationComponent implements OnInit {
   countryChanged() {
     this.form.get('country').valueChanges.subscribe(async value => {
       if (!value) return;
+      if (value['country_id'])
+        value = value['country_id']
       let res = await this.getItems('location/cities/' + value);
       if (res) {
         this.cities = res;
@@ -76,7 +93,12 @@ export class ClinicInformationComponent implements OnInit {
   cityChanged() {
     this.form.get('city').valueChanges.subscribe(async value => {
       if (!value) return;
+      if (value['city_id'])
+        value = value['city_id'];
       let country = this.form.get('country').value;
+      if (country['country_id'])
+        country = country['country_id'];
+      console.log(country, value);
       let res = await this.getItems('location/states/' + country + "/" + value);
       if (res) {
         this.states = res;
@@ -100,13 +122,13 @@ export class ClinicInformationComponent implements OnInit {
         })
     })
   }
-  getClinicTypes() {
-    this.clinicService.getClinicTypes()
-      .then(types => {
-        this.form.get('clinicTypes').setValue(types);
-        this.form.get('clinicTypes').updateValueAndValidity();
-      })
-  }
+  // getClinicTypes() {
+  //   this.clinicService.getClinicTypes()
+  //     .then(types => {
+  //       this.form.get('clinicTypes').setValue(types);
+  //       this.form.get('clinicTypes').updateValueAndValidity();
+  //     })
+  // }
   init() {
     this.form = new FormGroup({
       "clinicTypes": new FormControl(null),
@@ -123,7 +145,21 @@ export class ClinicInformationComponent implements OnInit {
   }
 
   onSubmit() {
-    this.clinicService.editClinic(this.form.value)
+    console.log(this.form.value);
+    let tempTypes = [];
+    this.form.value['clinicTypes'].forEach(type => {
+      tempTypes.push(type['spec_id']);
+    })
+
+    let dataToSend = {
+      ...this.form.value
+    }
+    console.log(dataToSend);
+    dataToSend['clinicTypes'] = tempTypes;
+    dataToSend['country'] = dataToSend['country']['country_id'];
+    dataToSend['city'] = dataToSend['city']['city_id'];
+    dataToSend['state'] = dataToSend['state']['state_id'];
+    this.clinicService.editClinic(dataToSend)
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success(data['message'], 'success');

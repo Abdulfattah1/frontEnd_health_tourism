@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
 import { TravelAgenciesComponent } from './travel-agencies/travel-agencies.component';
 import { TravelAgenciesTableComponent } from './travel-agencies/travel-agencies-table/travel-agencies-table.component';
-
+import { AddTravelAgencyComponent } from './travel-agencies/add-travel-agency/add-travel-agency.component';
 const routes: Routes = [
     {
         path: '',
@@ -38,13 +38,13 @@ const routes: Routes = [
                         path: "addTravelAgency",
                         // canActivate: [privilegesGuard],
                         // data: ['addTravelAgency'],
-                        //component: AddClinicComponent
+                        component: AddTravelAgencyComponent
                     },
                     {
                         path: "editTravelAgency/:id",
                         // canActivate: [AuthGuard],
                         // data:['editTravelAgency'],
-                        loadChildren: "../clinics/clinics/clinic/clinic.module#ClinicModule"
+                        loadChildren: "./travel-agencies/travel-agency/travel-agency.module#TravelAgencyModule"
                     }
                 ]
             }

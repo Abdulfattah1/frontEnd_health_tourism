@@ -71,7 +71,8 @@
     "allTravelAgencies": "all Travel Agencies",
     "TravelAgenciesByStatus": "travel agencies applications",
     "myTravelAgencies": "my Travel Agencies",
-    "addTravelAgency": "add TravelAgency"
+    "addTravelAgency": "add TravelAgency",
+    "trips": "trips"
   },
   "Table": {
     "name": "Name",

@@ -12,7 +12,7 @@
       <th scope="row">1</th>
       <td>{{spec.name}}</td>
       <td>
-        <input [checked] ='spec.is_primary' type="checkbox" nbInput size="small" shape="semi-round"
+        <input [(ngModel)] = "radioButton" [checked] ='spec.is_primary' type="checkbox" nbInput size="small" shape="semi-round"
           (change)="primary(spec,i)">
       </td>
       <td>

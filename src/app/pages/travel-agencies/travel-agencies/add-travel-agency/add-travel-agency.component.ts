@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ClinicsComponent } from '../clinics.component';
 import { ToastrService } from 'ngx-toastr';
-import { MainService } from '../../../../services/main.service';
-import { LocationsService } from '../../../../services/locations.service';
-import { ClinicsService } from '../../clinics.service';
+import { TravelAgenciesService } from '../../travel-agencies.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LocationsService } from '../../../../services/locations.service';
+import { MainService } from '../../../../services/main.service';
 
 @Component({
-  selector: 'add-clinic',
-  templateUrl: './add-clinic.component.html',
-  styleUrls: ['./add-clinic.component.scss']
+  selector: 'add-travel-agency',
+  templateUrl: './add-travel-agency.component.html',
+  styleUrls: ['./add-travel-agency.component.scss']
 })
-export class AddClinicComponent implements OnInit {
+export class AddTravelAgencyComponent implements OnInit {
 
   form: FormGroup;
   clinicTypes: any;
@@ -25,7 +24,7 @@ export class AddClinicComponent implements OnInit {
   marker: any;
   constructor(
     private tostr: ToastrService,
-    private clinicService: ClinicsService,
+    private travelAgenciesService: TravelAgenciesService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private geoLocationService: LocationsService,
@@ -50,6 +49,7 @@ export class AddClinicComponent implements OnInit {
         this.marker = this.location;
       })
   }
+
   getlocation() {
     return new Promise((resolve, reject) => {
       this.geoLocationService.getPosition().subscribe(
@@ -117,9 +117,9 @@ export class AddClinicComponent implements OnInit {
     })
 
   }
+
   init() {
     this.form = new FormGroup({
-      "clinicTypes": new FormControl(null),
       "name": new FormControl(null, [Validators.required, Validators.minLength(3)]),
       "city": new FormControl(null, [Validators.required]),
       "country": new FormControl(null, [Validators.required]),
@@ -132,23 +132,24 @@ export class AddClinicComponent implements OnInit {
     })
   }
   onSubmit() {
-    let clinicData = {
+    let travelAgencyData = {
       ...this.form.value,
-      userId: this.clinicService.getUserId()
+      map:"",
+      userId: this.travelAgenciesService.getUserId()
     }
-    this.clinicService.addClinic(clinicData)
+    this.travelAgenciesService.addTravelAgency(travelAgencyData)
       .subscribe(data => {
         if (data['success']) {
-          this.tostr.success('clinic added', 'success');
+          this.tostr.success('travel agency added', 'success');
           setTimeout(() => {
             this.form.reset();
             this.router.navigate(['../'], { relativeTo: this.activatedRoute });
           }, 1000);
         } else {
-          this.tostr.error("clinic was not added", 'error');
+          this.tostr.error("travel agency  was not added", 'error');
         }
       }, err => {
-        this.tostr.error("clinic was not added", 'error');
+        this.tostr.error("travel agency was not added", 'error');
       })
   }
 
@@ -168,5 +169,6 @@ export class AddClinicComponent implements OnInit {
         })
     })
   }
+
 
 }

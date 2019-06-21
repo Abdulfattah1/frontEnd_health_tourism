@@ -23,7 +23,6 @@ export class ClinicComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('clinic');
     if (!this.privilegesService.promise) {
       this.privilegesService.loadMyPrivileges();
     }

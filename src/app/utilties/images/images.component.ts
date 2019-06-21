@@ -14,6 +14,7 @@ export class ImagesComponent implements OnInit {
 
 
 
+  @Input() id:number;
   @Input() slides: any[] = [];
   @Input() files: any[];
   @Input() shown: boolean;
@@ -36,8 +37,6 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.slides = [];
-    console.log(this.slides);
     this.uploadPath = environment.upload + "images/" + this.fileName + "/";
   };
 
@@ -55,7 +54,7 @@ export class ImagesComponent implements OnInit {
 
 
   save() {
-    let add = this.imagesService.addImages(this.fileName, this.imagesToSend)
+    let add = this.imagesService.addImages(this.fileName, this.imagesToSend,this.id)
       .subscribe(images => {
         if (images['success']) {
           this.tostr.success('it was added successfuly', 'success');
@@ -76,7 +75,7 @@ export class ImagesComponent implements OnInit {
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success('it was deleted successfuly', 'success');
-          this.slides.splice(this.activeSlideIndex);
+          this.slides.splice(this.activeSlideIndex,1);
         }
       }, err => {
         this.tostr.error('there was a problem', 'error');

@@ -13,11 +13,13 @@
 <br />
 <div *ngIf="shown" class="row justify-content-end">
   <div class="col-2 text-center">
-    <button type="button" size="small" nbButton hero status="primary" (click)="removeSlide()">{{"button.delete" | translate}}
+    <button type="button" size="small" [disabled]='!slides || slides.length == 0' nbButton hero status="primary"
+      (click)="removeSlide()">{{"button.delete" | translate}}
     </button>
   </div>
   <div class="col-2 text-center">
-    <button type="button" size="small" nbButton hero status="primary" (click)="file.click()">{{"button.add" | translate}}
+    <button type="button" size="small" nbButton hero status="primary"
+      (click)="file.click()">{{"button.add" | translate}}
     </button>
   </div>
   <div>
@@ -26,7 +28,7 @@
   </div>
 </div>
 
-<input type="file" multiple = "true" #file (change)='addSlide($event.target.files)' hidden="true">
+<input type="file" multiple="true" #file (change)='addSlide($event.target.files)' hidden="true">
 
 
 <!-- <ng-template #imageModel let-c="close" let-d="dismiss">

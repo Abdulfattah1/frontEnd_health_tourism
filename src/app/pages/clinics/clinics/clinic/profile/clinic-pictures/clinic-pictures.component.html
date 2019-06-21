@@ -5,11 +5,12 @@
     </h5>
   </nb-card-header>
 
-  <nb-card-body class="border-bottom">
+  <nb-card-body class="border-bottom" *ngIf="loading">
     <images 
     [slides]="slides" 
     [shown]="'true'"
      [fileName]="'clinics'" 
+     [id]="clinicId"
      (deleteImage) = "deleteImage($event)"
      (submit)="addImages($event)"></images>
   </nb-card-body>

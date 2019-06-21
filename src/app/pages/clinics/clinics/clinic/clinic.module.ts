@@ -11,7 +11,6 @@ import { ClinicInformationComponent } from './profile/clinic-information/clinic-
 import { DescriptionComponent } from './profile/description/description.component';
 import { ClinicPicturesComponent } from './profile/clinic-pictures/clinic-pictures.component';
 import { CurrencyComponent } from './profile/currency/currency.component';
-import { FormsModule } from '@angular/forms';
 import { UtilitiesModule } from '../../../../utilties/utilities.module';
 import { TypeaheadModule, AccordionModule } from 'ngx-bootstrap';
 import { ClinicsTreatmentComponent } from './treatments/clinics-treatment/clinics-treatment.component';

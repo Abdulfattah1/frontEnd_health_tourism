@@ -6,9 +6,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { travelAgenciesRoutingModule } from './travelAgencies.routing.module';
 import { TravelAgenciesComponent } from './travel-agencies/travel-agencies.component';
 import { TravelAgenciesTableComponent } from './travel-agencies/travel-agencies-table/travel-agencies-table.component';
+import { AddTravelAgencyComponent } from './travel-agencies/add-travel-agency/add-travel-agency.component';
 
 @NgModule({
-  declarations: [TravelAgenciesComponent, TravelAgenciesTableComponent],
+  declarations: [TravelAgenciesComponent, TravelAgenciesTableComponent, AddTravelAgencyComponent],
   imports: [
     CommonModule,
     SharedModule,

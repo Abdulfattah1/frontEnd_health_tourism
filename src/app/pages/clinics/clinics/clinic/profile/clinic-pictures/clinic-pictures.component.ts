@@ -12,12 +12,20 @@ export class ClinicPicturesComponent implements OnInit {
 
   slides: any[] = [];
   shown: boolean;
+  clinicId: number;
+  loading:boolean = false;
   constructor(
     private tostr: ToastrService,
     private clinicService: ClinicService
   ) { }
 
   ngOnInit() {
+    this.clinicId = this.clinicService.getClinicId();
+    this.clinicService.getClinicImages()
+    .subscribe(data=>{
+      this.slides = data['data'];
+      this.loading = true;
+    })
   }
 
   deleteImage(event) { };

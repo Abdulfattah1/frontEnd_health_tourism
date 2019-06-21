@@ -71,7 +71,8 @@
     "allTravelAgencies": "كل المكاتب السياحية",
     "TravelAgenciesByStatus": "طلبات الانضمام",
     "myTravelAgencies": "مكاتبي",
-    "addTravelAgency": "اضافة مكتب سياحي"
+    "addTravelAgency": "اضافة مكتب سياحي",
+    "trips":"الرحلات"
   },
   "Table": {
     "name": "الإسم",

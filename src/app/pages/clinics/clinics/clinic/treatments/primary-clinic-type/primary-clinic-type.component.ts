@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PrimaryClinicTypeComponent implements OnInit {
   @Input('clinicSpecializations') clinicSpecializations: any;
+  radioButton:any;
   subscriber: Subscription = new Subscription();
   constructor(
     private tostr: ToastrService,
@@ -22,7 +23,9 @@ export class PrimaryClinicTypeComponent implements OnInit {
 
   primary(spec, index: number) {
     console.log(spec);
-    let specSubscriber = this.treatmentService.setPrimary(spec['specializations_clinics_id'],spec['clinic_id'])
+    let value = this.radioButton;
+    console.log(this.radioButton);
+    let specSubscriber = this.treatmentService.setPrimary(spec['specializations_clinics_id'], spec['clinic_id'],value)
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success('it was added successfuly', 'success');
@@ -35,7 +38,7 @@ export class PrimaryClinicTypeComponent implements OnInit {
 
   delete(spec, index: number) {
     console.log(spec);
-    let subsc = this.treatmentService.deleteSpecialization(spec['specializations_clinics_id'],spec['clinic_id'])
+    let subsc = this.treatmentService.deleteSpecialization(spec['specializations_clinics_id'], spec['clinic_id'])
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success('it was added successfuly', 'success');

@@ -75,11 +75,18 @@ export class TreatmentsService {
     return this.api.post('procedure/deleteClinicSpecialization/', dataToSend);
   }
 
-  setPrimary(specializations_clinics_id, clinic_id) {
+  setPrimary(specializations_clinics_id, clinic_id,value) {
+
+    this.api.get('procedure/insertProceduresIntoDB')
+    .subscribe(data=>{
+      console.log(data);
+    })
     let dataToSend = {
       specializations_clinics_id,
-      clinic_id
+      clinic_id,
+      value
     }
     return this.api.post('procedure/putSpecializationsPrimary', dataToSend);
   }
+
 }

@@ -33,12 +33,12 @@ export class ImagesService {
         return ok;
     }
 
-    addImages(fileName: string, formData: FormData) {
-        return this.api.post(fileName + '/addImage', formData);
+    addImages(fileName: string, formData: FormData, id: number) {
+        return this.api.post(fileName + '/addImage/' + id, formData);
     }
 
     deleteImage(fileName: string, index: number) {
-        return this.api.delete(fileName + "/deleteImage", index);
+        return this.api.delete(fileName + "/deleteImage",index);
     }
 
 

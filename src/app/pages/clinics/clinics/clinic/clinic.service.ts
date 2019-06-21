@@ -38,21 +38,22 @@ export class ClinicService {
 
 
   getAllTypes() {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
       this.api.get('clinics/clinicTypes')
-      .subscribe(data=>{
-        if(data['success']) {
-          resolve(data['data']);
-        } else{
+        .subscribe(data => {
+          if (data['success']) {
+            resolve(data['data']);
+          } else {
+            reject(false);
+          }
+        }, err => {
           reject(false);
-        }
-      },err=>{
-        reject(false);
-      })
+        })
     })
   }
 
   getClinicDescription() {
+    console.log(this.clinicId);
     return new Promise((resolve, reject) => {
       this.api.get('clinics/getDescreption/' + this.clinicId)
         .subscribe(data => {
@@ -103,7 +104,7 @@ export class ClinicService {
 
   addescription(descreption: string) {
     return new Promise((resolve, reject) => {
-      this.api.put('clinics/addDescreption', { descreption, clinicId: this.clinicId })
+      this.api.put('clinics/addDescreption/' + this.clinicId, { descreption })
         .subscribe(data => {
           if (data['success'])
             resolve(true);
@@ -124,8 +125,8 @@ export class ClinicService {
   }
 
 
-  addCurrency(value) {
-    return this.api.put('clinics/editCurrency/' + this.clinicId, { value })
+  addCurrency(currencies) {
+    return this.api.post('clinics/addCurrency/' + this.clinicId, { currencies })
   }
 
   getAllCurrencies() {
@@ -156,16 +157,13 @@ export class ClinicService {
 
   addImages(data) {
     let clinicId = this.clinicId;
-    data.append('clinicId',this.clinicId.toString());
-    return this.api.post('clinics/addImage',data);
+    data.append('clinicId', this.clinicId.toString());
+    return this.api.post('clinics/addImage', data);
   }
 
-  getImages() {
-    return this.api.get('clinics/deleteImage/' + this.clinicId);
-  }
-  
+
   deleteImage(imageId) {
-    return this.api.delete('clinics/deleteImage',imageId);
+    return this.api.delete('clinics/deleteImage', imageId);
   }
 
   getClinicImages() {
