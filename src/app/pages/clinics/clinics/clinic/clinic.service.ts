@@ -53,7 +53,6 @@ export class ClinicService {
   }
 
   getClinicDescription() {
-    console.log(this.clinicId);
     return new Promise((resolve, reject) => {
       this.api.get('clinics/getDescreption/' + this.clinicId)
         .subscribe(data => {

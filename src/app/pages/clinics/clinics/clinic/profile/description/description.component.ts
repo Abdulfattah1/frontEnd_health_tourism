@@ -18,7 +18,7 @@ export class DescriptionComponent implements OnInit {
   ngOnInit() {
     this.clinicService.getClinicDescription()
     .then(res=>{
-      this.description = res['descreption'];
+      this.description = res['description'];
     });
   }
 

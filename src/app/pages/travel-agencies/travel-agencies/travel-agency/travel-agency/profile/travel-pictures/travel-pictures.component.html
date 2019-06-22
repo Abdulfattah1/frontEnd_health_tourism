@@ -1,3 +1,13 @@
-<p>
-  travel-pictures works!
-</p>
+<nb-card>
+  <nb-card-header>
+    <h5 class="border-bottom">
+      {{'pictures' | translate}}
+    </h5>
+  </nb-card-header>
+
+  <nb-card-body class="border-bottom" *ngIf="loading">
+    <images [slides]="slides" [shown]="'true'" [fileName]="'clinics'" [id]="clinicId"
+      (deleteImage)="deleteImage($event)" (submit)="addImages($event)"></images>
+  </nb-card-body>
+
+</nb-card>
