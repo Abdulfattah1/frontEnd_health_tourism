@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TravelAgencyComponent } from './travel-agency/travel-agency.component';
+import { InboxComponent } from './travel-agency/inbox/inbox.component';
+import { TripsComponent } from './travel-agency/trips/trips.component';
+import { StuffComponent } from './travel-agency/stuff/stuff.component';
+import { ReviewsComponent } from './travel-agency/reviews/reviews.component';
+import { ProfileComponent } from './travel-agency/profile/profile.component';
 
 const routes: Routes = [
     {
@@ -13,22 +18,23 @@ const routes: Routes = [
                 path: "inbox",
                 // canActivateChild: [privilegesGuard],
                 // data: ['clinics'],
+                component: InboxComponent
             },
             {
                 path: "profile",
-                //component:ProfileComponent
+                component: ProfileComponent
             },
             {
-                path: "treatments",
-                //component:TreatmentsComponent
+                path: "trips",
+                component: TripsComponent
             },
             {
                 path: "stuff",
-                //component:StuffComponent
+                component: StuffComponent
             },
             {
                 path: "reviews",
-                //component:ReviewsComponent
+                component: ReviewsComponent
             }
         ]
     }

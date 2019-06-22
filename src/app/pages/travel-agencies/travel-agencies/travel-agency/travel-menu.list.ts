@@ -23,8 +23,8 @@ export const TRAVEL_MENU: NbMenuItem[] = [
   {
     title: "List.trips",
     icon: 'nb-locked',
-    link: 'treatments',
-    data: { privilege: ['tripes'] }
+    link: 'trips',
+    data: { privilege: ['trips'] }
   },
   {
     title: "List.stuff",

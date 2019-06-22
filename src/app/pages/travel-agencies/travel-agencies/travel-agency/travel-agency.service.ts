@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MainService } from '../../../../services/main.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,9 @@ import { Injectable } from '@angular/core';
 export class TravelAgencyService {
 
   private travelAgencyId: number;
-  constructor() { }
+  constructor(
+    private api: MainService
+  ) { }
 
   setTravelAgencyId(travelAgencyId) {
     this.travelAgencyId = travelAgencyId;
@@ -14,5 +17,16 @@ export class TravelAgencyService {
 
   getTravelAgencyId() {
     return this.travelAgencyId;
+  }
+
+  getTravelAgencyInfo() {
+    return this.api.get('travelAgencies/travelAgencyById' + "/" + this.travelAgencyId);
+  }
+
+  editTravelAgency(info) {
+    let dataToSend = {
+      ...info,
+    }
+    return this.api.put('travelAgencies/editTravel/' + this.travelAgencyId, dataToSend);
   }
 }

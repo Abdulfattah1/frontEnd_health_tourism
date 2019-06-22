@@ -4,6 +4,7 @@ import { FieldsService } from '../../../../../services/fields.service';
 import { TRAVEL_MENU } from "../travel-menu.list";
 import { ActivatedRoute } from '@angular/router';
 import { TravelAgencyService } from '../travel-agency.service';
+import { NbSidebarService } from '@nebular/theme';
 @Component({
   selector: 'travel-agency',
   templateUrl: './travel-agency.component.html',
@@ -20,7 +21,8 @@ export class TravelAgencyComponent implements OnInit {
     private privilegesService: PrivilegesService,
     private fieldService: FieldsService,
     private activatedroute: ActivatedRoute,
-    private travelAgencyService: TravelAgencyService
+    private travelAgencyService: TravelAgencyService,
+    private sidebarService:NbSidebarService
   ) { }
   ngOnInit() {
     let lang = localStorage.getItem('lang');
@@ -38,6 +40,12 @@ export class TravelAgencyComponent implements OnInit {
       this.travelAgencyId = param['id'];
       this.travelAgencyService.setTravelAgencyId(this.travelAgencyId);
     })
+  }
+
+  toggleSidebar(): boolean {
+    // this.sidebarService.toggle(true, 'travel-menu');
+    // this.sidebarService.toggle(false, 'menu-sidebar')
+    return false;
   }
 
 }
