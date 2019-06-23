@@ -69,6 +69,16 @@ export class FieldsService {
         { name: 'name', type: 'text', label: 'privilegeName', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] },
         { name: 'description', type: 'text', label: 'description', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] }
       ]
+
+    fields['trips'] = [
+      { name: "start_from", type: 'date', label: "startFrom", validators: [Validators.required], colClasses: ['col-4', 'my-2'], inputClasses: ['mt-1'] },
+      { name: "finish_to", type: 'date', label: "FinshAt", validators: [Validators.required], colClasses: ['col-4', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'name', type: 'text', label: "name", validators: [Validators.required], colClasses: ['col-8', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'trip_flow', type: "textarea", label: "tripFlow", validators: [Validators.required], colClasses: ['col-8', 'my-2'], inputClasses: ['mt-1', 'textArea'] },
+      { name: 'description', type: "textarea", label: "description", validators: [Validators.required], colClasses: ['col-8', 'my-2', 'mr-1'], inputClasses: ['mt-1', 'textArea'] },
+      { name: 'price', type: 'number', label: "price", validators: [Validators.required], colClasses: ['col-4', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'evaluation', type: 'number', label: "evaluation", validators: [Validators.required], colClasses: ['col-4', 'my-2'], inputClasses: ['mt-1'] },
+    ]
     return fields[name];
   }
 
@@ -83,8 +93,8 @@ export class FieldsService {
       //   "name", "username", "lOwnerName", "email", "city", "country", "descrption"
       // ]
 
-    fields['roles'] = [
-      'name', 'description'],
+      fields['roles'] = [
+        'name', 'description'],
       fields['privileges'] = [
         'name', 'description'
       ]

@@ -1,11 +1,4 @@
-
-<nb-layout>
-  <nb-sidebar [fixed] = 'true' >
-    <nb-menu  [items]="menu"></nb-menu>
-  </nb-sidebar>
-  <nb-layout-column class="colored-column-success">
-    <router-outlet></router-outlet>
-  </nb-layout-column>
-</nb-layout>
-
-
+<nb-sidebar [fixed]='true'>
+  <nb-menu [items]="menu"></nb-menu>
+</nb-sidebar>
+<router-outlet></router-outlet>

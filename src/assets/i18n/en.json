@@ -72,7 +72,11 @@
     "TravelAgenciesByStatus": "travel agencies applications",
     "myTravelAgencies": "my Travel Agencies",
     "addTravelAgency": "add TravelAgency",
-    "trips": "trips"
+    "travelAgency": "travel Agency",
+    "trips": "trips",
+    "allTrips": "all Trips",
+    "myTrips": "my Trips",
+    "addTrip": " add Trip"
   },
   "Table": {
     "name": "Name",
@@ -104,7 +108,7 @@
   "actions": "Actions",
   "areYouSure": "Are You Sure",
   "confirmDelete": "Delete Confirm",
-  "description": "Role Description",
+  "description": "Description",
   "id": "id",
   "firstname": "firstName",
   "lastname": "lastName",
@@ -135,5 +139,8 @@
   "clinicDescription": "clinic description",
   "clinicOverview": "clinic Overview",
   "profile": "Profile",
-  "therAreNoData": "there are no data"
+  "therAreNoData": "there are no data",
+  "travelAgencyOverView":"travel Agency OverView",
+  "editTravelAgency":"edit Travel Agency",
+  "travelAgencyName":"travel Agency Name"
 }

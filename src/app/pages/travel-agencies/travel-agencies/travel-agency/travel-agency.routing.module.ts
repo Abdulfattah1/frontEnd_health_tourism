@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TravelAgencyComponent } from './travel-agency/travel-agency.component';
 import { InboxComponent } from './travel-agency/inbox/inbox.component';
-import { TripsComponent } from './travel-agency/trips/trips.component';
 import { StuffComponent } from './travel-agency/stuff/stuff.component';
 import { ReviewsComponent } from './travel-agency/reviews/reviews.component';
 import { ProfileComponent } from './travel-agency/profile/profile.component';
-
 const routes: Routes = [
     {
         path: '',
@@ -26,7 +24,7 @@ const routes: Routes = [
             },
             {
                 path: "trips",
-                component: TripsComponent
+                loadChildren: "./travel-agency/trips/trips.module#TripsModule"
             },
             {
                 path: "stuff",

@@ -1,9 +1,9 @@
-<nb-card *ngIf="display">
-  <nb-card-header>
+<div class="card" *ngIf="display">
+  <div class="card-header">
     <h5 class="font-weight-bold text-center">{{ title }}</h5>
-  </nb-card-header>
+  </div>
   <form class="formGroup" [formGroup]="Form" (submit)="onSubmit()">
-    <nb-card-body>
+    <div class="card-body">
       <div class="row text-center justify-content-center">
         <div *ngFor="let item of items" [ngClass]="item.colClasses">
           <div [ngSwitch]="item.type">
@@ -64,7 +64,7 @@
                 class="form-control"
                 [placeholder]="item.name"
                 [formControlName]="item.name"
-                rows="5"
+                rows="3"
                 (change)="!!onChange(item.name)"
               ></textarea>
             </div>
@@ -83,6 +83,10 @@
               />
             </div>
 
+            <div *ngSwitchCase="'style'">
+              <div class="w-100"></div>
+            </div>
+
             <div *ngSwitchDefault>
               <h6 class="font-weight-bold">{{ item.label }}</h6>
               <input
@@ -96,8 +100,8 @@
               />
             </div>
 
-            <div
-              *ngIf="
+            <div *ngIf="item.type!='style'">
+            <div *ngIf="
                 Form.get(item.name).hasError('required') &&
                 Form.get(item.name).touched
               "
@@ -108,9 +112,10 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </nb-card-body>
-    <nb-card-footer>
+    </div>
+    <div class="card-footer">
       <div class="row justify-content-center" *ngIf="creatingForm || !updateInternally">
         <div class="col-4 text-center">
           <button
@@ -124,6 +129,6 @@
           </button>
         </div>
       </div>
-    </nb-card-footer>
+    </div>
   </form>
-</nb-card>
+</div>

@@ -29,8 +29,10 @@ export class FormCreatorComponent implements OnInit {
   @Input() updateInternally: boolean;
   @Input() updatingValueApiTo: string;
   @Input() addInternally: boolean = true;
+  @Input() dealInternally: boolean = true;
 
-  @Output("onSubmit") submit = new EventEmitter();
+  @Output("submitGeneralInfo") submitGeneralInfo = new EventEmitter();
+  @Output("statusChange") statusChange = new EventEmitter();
   lang: string;
   validators;
 
@@ -73,6 +75,8 @@ export class FormCreatorComponent implements OnInit {
     this.Form = new FormGroup({});
     let formControl: FormControl;
     this.items.forEach(item => {
+      if (item.type == 'style')
+        return;
       item.label = item.label.toLowerCase();
       item.label = this.translate.translateWord(item.label);
       if (item.validators) {
@@ -85,8 +89,9 @@ export class FormCreatorComponent implements OnInit {
       }
       this.Form.addControl(item.name, formControl);
     })
-
-
+    this.Form.statusChanges.subscribe(status => {
+      this.statusChange.emit(status);
+    })
     this.display = true;
   }
 
@@ -167,10 +172,11 @@ export class FormCreatorComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.addInternally) {
+  
+    if (this.dealInternally) {
       this.addValues();
     } else {
-      this.submit.emit(this.Form.value);
+      this.submitGeneralInfo.emit(this.Form.value);
     }
     //this.Form.reset();
   }

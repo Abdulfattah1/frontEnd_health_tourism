@@ -5,6 +5,12 @@ input.ng-valid.ng-touched {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
 .form-control {
   height: 36px !important;
+}
+
+.textArea {
+  resize: vertical !important;
+  height: auto !important;
 }

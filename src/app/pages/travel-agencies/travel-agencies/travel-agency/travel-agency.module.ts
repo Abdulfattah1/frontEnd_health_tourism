@@ -16,7 +16,7 @@ import { TravelAgencyDescriptionComponent } from './travel-agency/profile/travel
 import { TravelAgencyCurrencyComponent } from './travel-agency/profile/travel-agency-currency/travel-agency-currency.component';
 
 @NgModule({
-  declarations: [TravelAgencyComponent, TravelAgencyInformationComponent, InboxComponent, TripsComponent, StuffComponent, ReviewsComponent, ProfileComponent, TravelPicturesComponent, TravelAgencyDescriptionComponent, TravelAgencyCurrencyComponent],
+  declarations: [TravelAgencyComponent, TravelAgencyInformationComponent, InboxComponent, StuffComponent, ReviewsComponent, ProfileComponent, TravelPicturesComponent, TravelAgencyDescriptionComponent, TravelAgencyCurrencyComponent],
   imports: [
     ThemeModule,
     SharedModule,

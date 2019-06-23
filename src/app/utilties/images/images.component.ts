@@ -58,7 +58,7 @@ export class ImagesComponent implements OnInit {
       .subscribe(images => {
         if (images['success']) {
           this.tostr.success('it was added successfuly', 'success');
-          images['images'].forEach(image => {
+          images['data'].forEach(image => {
             this.slides.push(image);
           })
           this.imagesToSend = new FormData();

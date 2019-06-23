@@ -24,7 +24,27 @@ export const TRAVEL_MENU: NbMenuItem[] = [
     title: "List.trips",
     icon: 'nb-locked',
     link: 'trips',
-    data: { privilege: ['trips'] }
+    data: { privilege: ['trips'] },
+    children:[
+      {
+        title: "List.allTrips",
+        icon: 'nb-locked',
+        link: 'allTrips',
+        data: { privilege: ['trips'] }
+      },
+      {
+        title: "List.myTrips",
+        icon: 'nb-locked',
+        link: 'myTrips',
+        data: { privilege: ['myTrips'] }
+      },
+      {
+        title: "List.addTrip",
+        icon: 'nb-locked',
+        link: 'addTrip',
+        data: { privilege: ['addTrip'] }
+      }
+    ]
   },
   {
     title: "List.stuff",

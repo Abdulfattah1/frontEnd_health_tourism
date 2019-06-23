@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { HttpModule } from "@angular/http";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { NbCardModule, NbDatepickerModule, NbDialogModule, NbSpinnerModule, NbLayoutModule } from "@nebular/theme";
+import { NbCardModule, NbDatepickerModule, NbDialogModule, NbSpinnerModule, NbLayoutModule, NbStepperModule } from "@nebular/theme";
 import { MySelectComponent } from "./my-select/my-select.component";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -38,7 +38,8 @@ const EXPORT_MODULES = [CommonModule,
   ImagesComponent,
   NgbTypeaheadModule,
   AutoCompleteComponent,
-  TypeaheadModule
+  TypeaheadModule,
+  NbStepperModule
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -53,7 +54,7 @@ const IMPORT_MODULES = [CommonModule,
   NbSpinnerModule,
   CarouselModule,
   NgbTypeaheadModule,
-
+  NbStepperModule,
   ModalModule.forRoot(),
   TypeaheadModule,
   NbDialogModule.forChild()

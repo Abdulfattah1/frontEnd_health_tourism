@@ -65,7 +65,7 @@ export class ClinicsTableComponent implements OnInit {
       add: false,
       delete: true,
       edit: false,
-      position: this.lang == 'ar' ? 'left' : 'right'
+      position: this.lang == 'ar' ? 'right' : 'left'
     },
     columns: {}
   };
@@ -92,7 +92,7 @@ export class ClinicsTableComponent implements OnInit {
       add: true,
       delete: true,
       edit: true,
-      position: this.lang == 'ar' ? 'left' : 'right'
+      position: this.lang == 'ar' ? 'right' : 'left'
     },
     columns: {}
   };
