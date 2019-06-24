@@ -21,5 +21,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.translation.checkLang();
     this.authService.autoAuth();
+    
   }
 }

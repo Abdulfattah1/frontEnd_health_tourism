@@ -4,7 +4,8 @@
     "no": "No",
     "save": "Save",
     "delete": "Delete",
-    "add": "Add"
+    "add": "Add",
+    "submit":"submit"
   },
   "signIn": {
     "signIn": "sign In",
@@ -140,7 +141,9 @@
   "clinicOverview": "clinic Overview",
   "profile": "Profile",
   "therAreNoData": "there are no data",
-  "travelAgencyOverView":"travel Agency OverView",
-  "editTravelAgency":"edit Travel Agency",
-  "travelAgencyName":"travel Agency Name"
+  "travelAgencyOverView": "travel Agency OverView",
+  "editTravelAgency": "edit Travel Agency",
+  "travelAgencyName": "travel Agency Name",
+  "addGeneralInformation": "add General Information",
+  "addHotel":"add Hotel"
 }

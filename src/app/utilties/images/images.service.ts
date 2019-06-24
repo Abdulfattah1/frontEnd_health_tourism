@@ -38,7 +38,13 @@ export class ImagesService {
     }
 
     deleteImage(fileName: string, index: number) {
-        return this.api.delete(fileName + "/deleteImage",index);
+        return this.api.delete(fileName + "/deleteImage", index);
+    }
+
+
+    getImagesNames(fileName,images:FormData) {
+        images.append("fileName",fileName);
+        return this.api.post('images/addImages', images);
     }
 
 

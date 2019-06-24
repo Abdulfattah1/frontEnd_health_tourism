@@ -1,0 +1,10 @@
+<form-creator
+title="Hotel"
+apiName="hotel"
+fieldIndex="hotels"
+[dealInternally] = "false"
+(submitGeneralInfo) = "hotelInfo($event)"
+(statusChange)="hotelStatusChanged($event)"
+></form-creator>
+
+<trips-image (submitImages) = "imagesChangedF($event)"></trips-image>

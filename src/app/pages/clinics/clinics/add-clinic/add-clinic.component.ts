@@ -51,13 +51,19 @@ export class AddClinicComponent implements OnInit {
       })
   }
   getlocation() {
+    this.geoLocationService.getPosition()
+    .subscribe(data=>{
+      console.log(data);
+    })
     return new Promise((resolve, reject) => {
       this.geoLocationService.getPosition().subscribe(
         (pos: Position) => {
+          console.log(pos);
           let Pos = { latitude: +pos.coords.latitude, longitude: +pos.coords.longitude };
           this.originalLocation = Pos;
           resolve(Pos);
         }, err => {
+          console.log(err);
           reject(false);
         });
     })

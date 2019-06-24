@@ -90,7 +90,8 @@ export class FormCreatorComponent implements OnInit {
       this.Form.addControl(item.name, formControl);
     })
     this.Form.statusChanges.subscribe(status => {
-      this.statusChange.emit(status);
+      if(status == 'VALID')
+      this.statusChange.emit(this.Form.value);
     })
     this.display = true;
   }

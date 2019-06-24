@@ -76,7 +76,10 @@ export class TreatmentsService {
   }
 
   setPrimary(specializations_clinics_id, clinic_id,value) {
-
+    this.api.get('procedure/insertProceduresIntoDB')
+    .subscribe(data=>{
+      console.log(data);
+    })
     let dataToSend = {
       specializations_clinics_id,
       clinic_id,
@@ -86,10 +89,7 @@ export class TreatmentsService {
   }
 
 
-  //add procedure function
-  // this.api.get('procedure/insertProceduresIntoDB')
-  // .subscribe(data=>{
-  //   console.log(data);
-  // })
+  // add procedure function
+
 
 }

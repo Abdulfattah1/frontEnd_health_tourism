@@ -4,7 +4,8 @@
     "no": "لا",
     "save": "حفظ",
     "delete": "حذف",
-    "add": "اضافة"
+    "add": "اضافة",
+    "submit":"ارسال"
   },
   "signIn": {
     "signIn": "تسجيل الدخول",
@@ -150,5 +151,7 @@
   "therAreNoData": "لا يوجد بيانات",
   "travelAgencyOverView":"لمحة عامة عن المكتب",
   "editTravelAgency":"تعديل معلومات المكتب",
-  "travelAgencyName":"اسم المكتب"
+  "travelAgencyName":"اسم المكتب",
+  "addGeneralInformation":"اضافة معلومات عامة",
+  "addHotel":"اضافة فندق"
 }

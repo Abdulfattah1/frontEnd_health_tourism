@@ -1,51 +1,48 @@
 <nb-card>
   <nb-card-body>
-    <nb-stepper orientation="horizontal">
-      <nb-step [label]="labelOne">
-        <ng-template #labelOne>First step</ng-template>
-        <h4>add general information</h4>
+    <nb-stepper orientation="horizontal" disableStepNavigation = 'true'>
+      <nb-step [label]="labelOne" disableStepNavigation = "true">
+        <ng-template #labelOne>general info</ng-template>
         <form-creator
-        title="trips"
+        title="GeneralInformation"
         apiName="trips"
         fieldIndex="trips"
         [dealInternally] = "false"
         (submitGeneralInfo) = "submitGeneralInfo($event)"
         (statusChange)="statusChange($event)"
       ></form-creator>
-        <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton nbStepperNext [disabled] = 'generalInfoStatus'>next</button>
+      <div class="text-center card-footer mt-2">
+        <button nbButton disabled nbStepperNext class="m-2">prev</button>
+        <button (click) ="next()" nbButton nbStepperNext [disabled] = 'generalInfoStatus'>next</button>
+      </div>
       </nb-step>
-      <nb-step [label]="labelTwo">
-        <ng-template #labelTwo>Second step</ng-template>
-        <h4>Step content #2</h4>
-        <p class="lorem">
-          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
-          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
-          gravida vizzle, dang.
-        </p>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+      <nb-step [label]="labelTwo" disableStepNavigation = "true">
+        <ng-template #labelTwo>Images</ng-template>
+        <trips-image (submitImages) = "imagesChanged($event)"></trips-image>
+        <div class="text-center card-footer mt-2">
+          <button nbButton nbStepperPrevious class="m-2">prev</button>
+          <button nbButton nbStepperNext >next</button>
+        </div>
       </nb-step>
-      <nb-step label="Third step">
-        <h4>Step content #3</h4>
-        <p class="lorem">
-          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
-          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
-          gravida vizzle, dang.
-        </p>
-        <button nbButton nbStepperPrevious>prev</button>
+      <nb-step [label]="Thirdstep" disableStepNavigation = "true">
+        <ng-template #Thirdstep>hotels</ng-template>
+        <hotel (imagesChanged) ="hotelImagesChanged($event)" (hotelInfoChanged) = hotelInfoChanged($event)></hotel>
+      <div class="text-center card-footer mt-2">
+        <button nbButton nbStepperPrevious class="m-2">prev</button>
         <button nbButton nbStepperNext>next</button>
+      </div>
       </nb-step>
       <nb-step [label]="labelFour">
-        <ng-template #labelFour>Fourth step</ng-template>
-        <h4>Step content #4</h4>
-        <p class="lorem">
-          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
-          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
-          gravida vizzle, dang.
-        </p>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
+        <ng-template #labelFour>done</ng-template>
+        <div class="text-center">
+          <nb-alert accent="primary">
+              thank you so mutch we are almost done , click submit to continue
+            </nb-alert>
+        </div>
+        <div class="text-center card-footer mt-2">
+        <button nbButton nbStepperPrevious class="m-2">prev</button>
+        <button nbButton nbStepperNext (click)="submit()">{{"button.submit" | translate}}</button>
+      </div>
       </nb-step>
     </nb-stepper>
   </nb-card-body>

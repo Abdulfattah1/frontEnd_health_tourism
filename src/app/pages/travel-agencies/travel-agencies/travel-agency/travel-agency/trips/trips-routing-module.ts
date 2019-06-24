@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TripsComponent } from './trips.component';
+import { TripsTableComponent } from './trips-table/trips-table.component';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
-import { TripsTableComponent } from './trips-table/trips-table.component';
 import { MembersComponent } from './members/members.component';
 const routes: Routes = [
     {
@@ -46,6 +46,6 @@ const routes: Routes = [
 })
 export class tripsRoutingModule {
     constructor() {
-        console.log('trips');
+        
     }
 }
